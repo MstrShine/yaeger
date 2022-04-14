@@ -60,8 +60,12 @@ public abstract class YaegerGame extends Application {
         yaegerStage.setSize(size);
     }
     
-    protected void setSize(final boolean fullScreen) {
-    	this.yaegerStage.setFullscreen(fullScreen);
+    protected void setFullscreen() {
+    	yaegerStage.setFullscreen();
+    }
+    
+    protected void setMaximized() {
+    	yaegerStage.setMaximized();
     }
 
     /**

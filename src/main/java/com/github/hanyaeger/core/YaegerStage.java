@@ -20,6 +20,7 @@ public class YaegerStage implements Initializable {
 
 	private Size size = YaegerGame.DEFAULT_GAME_DIMENSIONS;
 	private boolean fullscreen = false;
+	private boolean maximized = false;
 
 	private final YaegerGame yaegerGame;
 	private final Stage stage;
@@ -71,7 +72,9 @@ public class YaegerStage implements Initializable {
 		stage.show();
 
 		if (this.fullscreen == true) {
-			stage.isFullScreen();
+			stage.setFullScreen(true);
+		} else if (this.maximized == true) {
+			stage.setMaximized(true);
 		} else {
 			stage.setWidth(stage.getWidth());
 			stage.setHeight(stage.getHeight());
@@ -121,8 +124,12 @@ public class YaegerStage implements Initializable {
 		sceneCollection.setActive(id);
 	}
 
-	public void setFullscreen(boolean isFullscreen) {
-		this.fullscreen = isFullscreen;
+	public void setFullscreen() {
+		this.fullscreen = true;
+	}
+
+	public void setMaximized() {
+		this.maximized = true;
 	}
 
 	/**

@@ -19,7 +19,6 @@ import com.github.hanyaeger.api.scenes.YaegerScene;
 public class YaegerStage implements Initializable {
 
 	private Size size = YaegerGame.DEFAULT_GAME_DIMENSIONS;
-	private boolean fullscreen = false;
 	private boolean maximized = false;
 
 	private final YaegerGame yaegerGame;
@@ -71,14 +70,9 @@ public class YaegerStage implements Initializable {
 		stage.setScene(sceneFactory.createEmptyForSize(size));
 		stage.show();
 
-		if (this.fullscreen == true) {
-			stage.setFullScreen(true);
-		} else if (this.maximized == true) {
-			stage.setMaximized(true);
-		} else {
-			stage.setWidth(stage.getWidth());
-			stage.setHeight(stage.getHeight());
-		}
+		stage.setMaximized(this.maximized);
+		stage.setWidth(stage.getWidth());
+		stage.setHeight(stage.getHeight());
 
 		yaegerGame.setupScenes();
 		sceneCollection.postSetupScenes();
@@ -122,10 +116,6 @@ public class YaegerStage implements Initializable {
 	 */
 	public void setActiveScene(final int id) {
 		sceneCollection.setActive(id);
-	}
-
-	public void setFullscreen() {
-		this.fullscreen = true;
 	}
 
 	public void setMaximized() {
